@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | FAQ Accordion Card</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    body{
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      align-items: center;
+      margin: 0;
+      background: linear-gradient(to bottom,hsl(273, 75%, 66%),hsl(240, 73%, 65%) );
+    } 
+    .main{
+      margin-left: -150px;
+      background: white;
+      width: 1050px;
+      height: 550px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px -20px black;
+    }
+    .images{
+      display: flex;
+      min-height: 100%;
+      align-items: center;
+      width: 100%;
+    }
+
+    .desktop{
+      translate: -20% 5%;
+    }
+    .bg{
+      width: 200%;
+      translate: -110% -6%;
+    }
+    .box{
+      z-index: 1;
+      translate: -30% 30%;
+    }
+    .faq{
+      margin: 50px 130px;
+      margin-left: -30px;
+    }
+    input{
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: orange;
+      clip-path: polygon(15% 0, 50% 40%, 85% 0, 100% 30%, 50% 100%, 0 30%);
+    }
+    label {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      height: 50px;
+      align-items: center;
+      border-bottom: 2px solid hsl(240, 5%, 91%);
+    }
+
+    label:hover{
+      color: orange;
+    }
+
+    .answer{
+      opacity: 0;
+      height: 0;
+      margin-top: 20px;
+      transition: height 1s ease-out,opacity 1s ease-out;
+
+      /*display: none;*/
+   }
+
+  </style>
+</head>
+<body>
+  <img src="images/illustration-box-desktop.svg" alt="desktop" class="box">      
+  <section class="main">
+    <div class="images">
+      <img src="images/illustration-woman-online-desktop.svg" alt="desktop" class="desktop">      
+      <img src="images/bg-pattern-desktop.svg" alt="desktop" class="bg">          
+    </div>
+    <div class="faq">
+      <h1>FAQ</h1>
+      
+      <label for="question1">How many team members can I invite? <input type="checkbox" name="question" id = "question1" class="questions" onclick="unction()"> </label>
+      
+      <div class="answer">You can invite up to 2 additional users on the Free plan. There is no limit on team members for the Premium plan.</div>
+
+      <label for="question2">What is the maximum file upload size?<input type="checkbox" name="question" id = "question2" class="questions" onclick="unction()"></label>
+      
+      <div class="answer">No more than 2GB. All files in your account must fit your allotted storage space.</div>
+
+      <label for="question3">How do I reset my password?<input type="checkbox" name="question" id = "question3" class="questions" onclick="unction()"></label>
+      
+      <div class="answer">Click “Forgot password” from the login page or “Change password” from your profile page.A reset link will be emailed to you.</div>
+
+      <label for="question4">Can I cancel my subscription?<input type="checkbox" name="question" id = "question4" class="questions" onclick="unction()"></label>
+      
+      <div class="answer">Yes! Send us a message and we’ll process your request no questions asked.</div>
+
+      <label for="question5">Do you provide additional support?<input type="checkbox" name="question" id = "question5" class="questions" onclick="unction()"></label>
+      
+      <div class="answer">Chat and email support is available 24/7. Phone lines are open during normal business hours.</div>
+    
+
+    </div>
+  </section>
+
+  <script type="text/javascript">
+    function unction() {
+    var checkBox = document.getElementsByClassName("questions");
+    const text = document.getElementsByClassName("answer");
+
+    for (let i = 0; i < checkBox.length; i++) {
+      if (checkBox[i].checked == true){
+        // text[i].style.display = "block";
+        text[i].style.height = "50px";
+        text[i].style.opacity = "1";
+
+      } else {
+        // text[i].style.display = "none";
+        text[i].style.height = "0px";
+        text[i].style.opacity = "0";
+      }
+    }
+    }
+
+
+  </script>
+ 
+</body>
+</html>
+
