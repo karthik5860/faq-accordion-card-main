@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
   
   <title>Frontend Mentor | FAQ Accordion Card</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     body{
       display: flex;
@@ -17,6 +19,7 @@
       align-items: center;
       margin: 0;
       background: linear-gradient(to bottom,hsl(273, 75%, 66%),hsl(240, 73%, 65%) );
+      font-family: "Kumbh Sans";
     } 
     .main{
       margin-left: -150px;
@@ -35,106 +38,167 @@
       align-items: center;
       width: 100%;
     }
+    h1{
+      color: hsl(237, 12%, 33%);
+    }
 
     .desktop{
-      translate: -20% 5%;
+      translate: -15% 0%;
     }
     .bg{
       width: 200%;
-      translate: -110% -6%;
+      translate: -107% -6%;
     }
     .box{
       z-index: 1;
-      translate: -30% 30%;
+      translate: -45% 30%;
+    }
+    .box2{
+      margin: 50px;
+      margin-left: 0;
+      overflow: auto;
     }
     .faq{
-      margin: 50px 130px;
-      margin-left: -30px;
-    }
-    input{
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      background: orange;
-      clip-path: polygon(15% 0, 50% 40%, 85% 0, 100% 30%, 50% 100%, 0 30%);
-    }
-    label {
       width: 100%;
-      display: flex;
-      justify-content: space-between;
-      height: 50px;
-      align-items: center;
-      border-bottom: 2px solid hsl(240, 5%, 91%);
     }
 
-    label:hover{
+    .questions {
+      color: hsl(237, 12%, 33%);
+      display: flex;
+      justify-content: space-between;
+      height: max-content;
+      margin-right: 70px;
+      margin-top: 20px;
+      align-items: center;
+      border-bottom: 2px solid hsl(240, 5%, 91%);
+      cursor: pointer;
+    }
+
+    .questions:hover{
       color: orange;
     }
 
+    .imageicon{
+      width: 20px;
+      height: 20px;
+      transition: rotate 1s ease-out;
+    }
     .answer{
+      color: hsl(240, 6%, 50%);
+      overflow: hidden;
       opacity: 0;
-      height: 0;
-      margin-top: 20px;
-      transition: height 1s ease-out,opacity 1s ease-out;
+      max-height: 0px;
+      margin-top: 0px;
+      margin-right: 70px;
+      transition: max-height 1s ease-out,opacity 1s ease-out;
+   }
+   .faq.active .questions{
+      font-weight: 700;
+  }
+   .faq.active .answer{
+      opacity: 1;
+      max-height: 100px;
+   }
 
-      /*display: none;*/
+   .faq.active .imageicon{
+      rotate: 180deg;
+   }
+   .mobileimages{
+    display: none;
+   }
+
+   @media screen and (max-width:825px) {
+      body{
+        min-height: 100vh;
+      }
+      .main{
+        margin: 10px;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        height: 600px;
+        overflow: initial;
+        text-align: center;
+
+      }
+      h1{
+        text-align: center;
+      }
+      .mobileimages{
+        display: block;
+      }
+      .mobile{
+        width: 80%;
+        position: relative;
+        top: -120px;
+      }
+      .bg2{
+        width: 80%;
+        position: relative;
+        top: -180px;
+      }
+      .questions{
+        margin-right: 0;
+      }
+      .box2{
+        margin: 10px;
+        margin-top: -220px;
+      }
+      .images , .box{
+        display: none;
+      }
    }
 
   </style>
 </head>
 <body>
-  <img src="images/illustration-box-desktop.svg" alt="desktop" class="box">      
+  <img src="images/illustration-box-desktop.svg" alt="desktopbox" class="box">      
   <section class="main">
+    <div class="mobileimages">
+      <img src="images/illustration-woman-online-mobile.svg" alt="mobile" class="mobile">      
+      <img src="images/bg-pattern-mobile.svg" alt="desktop" class="bg2">
+    </div>
     <div class="images">
       <img src="images/illustration-woman-online-desktop.svg" alt="desktop" class="desktop">      
       <img src="images/bg-pattern-desktop.svg" alt="desktop" class="bg">          
     </div>
-    <div class="faq">
+    <div class="box2">
       <h1>FAQ</h1>
-      
-      <label for="question1">How many team members can I invite? <input type="checkbox" name="question" id = "question1" class="questions" onclick="unction()"> </label>
-      
-      <div class="answer">You can invite up to 2 additional users on the Free plan. There is no limit on team members for the Premium plan.</div>
 
-      <label for="question2">What is the maximum file upload size?<input type="checkbox" name="question" id = "question2" class="questions" onclick="unction()"></label>
-      
-      <div class="answer">No more than 2GB. All files in your account must fit your allotted storage space.</div>
+      <div class="faq">
+        <div class="questions">How many team members can I invite?<img src="images/icon-arrow-down.svg" class="imageicon"></div>
+        <div class="answer">You can invite up to 2 additional users on the Free plan. There is no limit on team members for the Premium plan.</div>
+      </div>
 
-      <label for="question3">How do I reset my password?<input type="checkbox" name="question" id = "question3" class="questions" onclick="unction()"></label>
-      
-      <div class="answer">Click “Forgot password” from the login page or “Change password” from your profile page.A reset link will be emailed to you.</div>
+      <div class="faq">
+        <div class="questions">What is the maximum file upload size?<img src="images/icon-arrow-down.svg" class="imageicon"></div>
+        <div class="answer">No more than 2GB. All files in your account must fit your allotted storage space.</div>
+      </div>
 
-      <label for="question4">Can I cancel my subscription?<input type="checkbox" name="question" id = "question4" class="questions" onclick="unction()"></label>
-      
-      <div class="answer">Yes! Send us a message and we’ll process your request no questions asked.</div>
+      <div class="faq">
+        <div class="questions">How do I reset my password?<img src="images/icon-arrow-down.svg" class="imageicon"></div>
+        <div class="answer">Click “Forgot password” from the login page or “Change password” from your profile page.A reset link will be emailed to you.</div>
+      </div>
 
-      <label for="question5">Do you provide additional support?<input type="checkbox" name="question" id = "question5" class="questions" onclick="unction()"></label>
-      
-      <div class="answer">Chat and email support is available 24/7. Phone lines are open during normal business hours.</div>
-    
+      <div class="faq">
+        <div class="questions">Can I cancel my subscription?<img src="images/icon-arrow-down.svg" class="imageicon"></div>
+        <div class="answer">Yes! Send us a message and we’ll process your request no questions asked.</div>
+      </div>
 
+      <div class="faq">
+        <div class="questions">Do you provide additional support?<img src="images/icon-arrow-down.svg" class="imageicon"></div>
+        <div class="answer">Chat and email support is available 24/7. Phone lines are open during normal business hours.</div>
+      </div> 
     </div>
   </section>
 
   <script type="text/javascript">
-    function unction() {
-    var checkBox = document.getElementsByClassName("questions");
-    const text = document.getElementsByClassName("answer");
+    const faqs = document.querySelectorAll(".faq");
 
-    for (let i = 0; i < checkBox.length; i++) {
-      if (checkBox[i].checked == true){
-        // text[i].style.display = "block";
-        text[i].style.height = "50px";
-        text[i].style.opacity = "1";
-
-      } else {
-        // text[i].style.display = "none";
-        text[i].style.height = "0px";
-        text[i].style.opacity = "0";
-      }
-    }
-    }
-
+    faqs.forEach(faq => {
+        faq.addEventListener("click",() => {
+            faq.classList.toggle("active");
+        });
+    });
 
   </script>
  
